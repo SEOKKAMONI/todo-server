@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -29,5 +31,14 @@ public class TodoService {
         Todo todo = todoRepository.getById(id);
         todo.UpdateTodo(updateRequestDto);
         return new TodoResponseDto(todo);
+    }
+
+    public List<TodoResponseDto> getTodo() {
+        List<Todo> todo = todoRepository.findAll();
+        List<TodoResponseDto> result = new ArrayList<>();
+        for(Todo t: todo) {
+            result.add(new TodoResponseDto(t));
+        }
+        return result;
     }
 }
