@@ -1,5 +1,6 @@
 package com.example.todo.domain;
 
+import com.example.todo.controller.dto.UpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,5 +29,10 @@ public class Todo {
     public Todo(String todo, Boolean complete) {
         this.todo = todo;
         this.complete = complete;
+    }
+
+    public void UpdateTodo(UpdateRequestDto updateRequestDto) {
+        this.todo = updateRequestDto.getTodo();
+        this.complete = updateRequestDto.getComplete();
     }
 }
