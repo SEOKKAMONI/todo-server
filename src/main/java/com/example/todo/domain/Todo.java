@@ -35,4 +35,8 @@ public class Todo {
         this.todo = updateRequestDto.getTodo();
         this.complete = updateRequestDto.getComplete();
     }
+
+    public void UpdateCompleteTodo() {
+        this.complete = !this.complete;
+    }
 }

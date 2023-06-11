@@ -28,7 +28,7 @@ public class TodoService {
 
     @Transactional
     public TodoResponseDto updateTodo(UpdateRequestDto updateRequestDto, Long id) {
-        Todo todo = todoRepository.getById(id);
+        Todo todo = todoRepository.findById(id).orElseThrow(IllegalAccessError::new);
         todo.UpdateTodo(updateRequestDto);
         return new TodoResponseDto(todo);
     }
@@ -40,5 +40,11 @@ public class TodoService {
             result.add(new TodoResponseDto(t));
         }
         return result;
+    }
+    @Transactional
+    public TodoResponseDto updateCompleteTodo(Long id) {
+        Todo todo = todoRepository.findById(id).orElseThrow(IllegalAccessError::new);
+        todo.UpdateCompleteTodo();
+        return new TodoResponseDto(todo);
     }
 }

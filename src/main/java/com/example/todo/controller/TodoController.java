@@ -33,4 +33,9 @@ public class TodoController {
     public List<TodoResponseDto> getTodo(){
         return todoService.getTodo();
     }
+
+    @PutMapping("/todo/{id}/complete")
+    public TodoResponseDto updateCompleteTodo(@PathVariable Long id) {
+        return todoService.updateCompleteTodo(id);
+    }
 }
